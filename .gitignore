@@ -8,5 +8,24 @@
 Thumbs.db
 
 # Local environment
+.env
+.env.*
+!.env.example
 *.local
 .dev.vars
+
+# Logs
+*.log
+
+# Temporary / backup files
+*.bak
+*.old
+*.tmp
+*.swp
+*.swo
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+*.tgz
