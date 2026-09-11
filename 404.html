@@ -2,15 +2,85 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <meta name="robots" content="noindex, nofollow" />
-    <title>404 — Página não encontrada</title>
+
+    <title>404 | Página não encontrada</title>
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/public/favicon/favicon-16x16.png"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/public/favicon/favicon-32x32.png"
+    />
+
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="/public/favicon/favicon-48x48.ico"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/public/favicon/favicon-180x180.png"
+    />
+
+    <link rel="stylesheet" href="/public/css/style.css" />
   </head>
+
   <body>
-    <main>
-      <h1>404</h1>
-      <p>Página não encontrada.</p>
-      <p><a href="/">Voltar</a></p>
-    </main>
+    <div class="site-shell">
+      <main class="container error-container">
+        <section class="error-page" aria-labelledby="error-title">
+          <div class="monogram" aria-hidden="true">
+            <img
+              src="/public/favicon/favicon-192x192.png"
+              alt=""
+            />
+          </div>
+
+          <p class="error-code" aria-hidden="true">404</p>
+
+          <h1 id="error-title" class="error-title">
+            Página não encontrada
+          </h1>
+
+          <p class="error-description">
+            O endereço acessado não existe ou não está disponível.
+          </p>
+
+          <a class="link-card error-action" href="/">
+            <span class="icon-frame" aria-hidden="true">
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+              >
+                <path d="m15 18-6-6 6-6"></path>
+              </svg>
+            </span>
+
+            <span class="link-content">
+              <span class="link-title">Voltar ao início</span>
+              <span class="link-description">
+                Retornar para a página principal
+              </span>
+            </span>
+          </a>
+        </section>
+
+        <footer class="footer">
+          <p>© 2026 Arthur Franklin. Todos os direitos reservados.</p>
+        </footer>
+      </main>
+    </div>
   </body>
 </html>
