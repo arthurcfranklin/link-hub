@@ -1,0 +1,528 @@
+
+    @font-face {
+      font-family: "Inter";
+      src: url("/public/fonts/Inter-Regular.woff2") format("woff2");
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Inter";
+      src: url("/public/fonts/Inter-Medium.woff2") format("woff2");
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Inter";
+      src: url("/public/fonts/Inter-SemiBold.woff2") format("woff2");
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Inter";
+      src: url("/public/fonts/Inter-Bold.woff2") format("woff2");
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+    }
+
+    :root {
+      --background: oklch(0.127 0 0);
+      --foreground: oklch(0.97 0 0);
+
+      --card: oklch(0.17 0 0 / 72%);
+      --popover: oklch(0.19 0 0);
+
+      --primary: oklch(0.78 0 0);
+
+      --secondary-foreground: oklch(0.67 0 0);
+
+      --muted: oklch(0.47 0 0);
+      --muted-foreground: oklch(0.61 0 0);
+
+      --border: oklch(1 0 0 / 8%);
+      --ring: oklch(0.72 0 0);
+
+      --font-sans:
+        "Inter",
+        ui-sans-serif,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        min-width: 320px;
+        background: var(--background);
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        background: var(--background);
+        color: var(--foreground);
+        font-family: var(--font-sans);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      p,
+      h1 {
+        margin: 0;
+      }
+
+      svg {
+        display: block;
+      }
+
+      ::selection {
+        background: color-mix(in oklab, var(--primary) 30%, transparent);
+        color: var(--foreground);
+      }
+
+      .site-shell {
+        isolation: isolate;
+        position: relative;
+        min-height: 100vh;
+        min-height: 100dvh;
+        overflow: hidden;
+
+        background:
+          radial-gradient(
+            circle at 50% 7%,
+            color-mix(in oklab, var(--primary) 10%, transparent) 0,
+            transparent 34rem
+          ),
+          linear-gradient(
+            to bottom,
+            oklch(0.145 0 0),
+            var(--background) 28rem,
+            oklch(0.115 0 0)
+          );
+      }
+
+      .site-shell::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        pointer-events: none;
+
+        background-image:
+          linear-gradient(
+            to right,
+            oklch(1 0 0 / 2.1%) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            oklch(1 0 0 / 2.1%) 1px,
+            transparent 1px
+          );
+
+        background-size: 60px 60px;
+        mask-image: linear-gradient(to bottom, black, transparent 76%);
+        -webkit-mask-image: linear-gradient(
+          to bottom,
+          black,
+          transparent 76%
+        );
+      }
+
+      .site-shell::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        box-shadow: inset 0 0 160px 30px oklch(0 0 0 / 62%);
+      }
+
+      .container {
+        position: relative;
+        z-index: 10;
+
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+        max-width: 620px;
+
+        min-height: 100vh;
+        min-height: 100dvh;
+
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      .profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .profile-heading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .monogram {
+        display: flex;
+        flex: 0 0 auto;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .monogram img {
+        display: block;
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+      }
+
+      .profile-name {
+        margin-top: 0;
+
+        font-size: 2.0rem;
+        font-weight: 700;
+        line-height: 1.25;
+
+        letter-spacing: -0.035em;
+      }
+
+      .profile-role {
+        margin-top: 12px;
+
+        color: var(--secondary-foreground);
+
+        font-size: 0.875rem;
+        font-weight: 500;
+        line-height: 1.25rem;
+      }
+
+      .profile-description {
+        max-width: 510px;
+        margin-top: 18px;
+
+        color: var(--muted-foreground);
+
+        font-size: 0.875rem;
+        line-height: 1.5rem;
+      }
+
+      .links {
+        margin-top: 36px;
+      }
+
+      .links-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .link-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+
+        min-height: 76px;
+        padding: 14px 16px;
+
+        border: 1px solid var(--border);
+        border-radius: 17px;
+
+        background: var(--card);
+
+        box-shadow: 0 8px 28px oklch(0 0 0 / 8%);
+
+        outline: none;
+
+        transition:
+          transform 210ms ease,
+          border-color 210ms ease,
+          background-color 210ms ease,
+          box-shadow 210ms ease;
+      }
+
+      .link-card:hover {
+        transform: translateY(-2px);
+
+        border-color: oklch(1 0 0 / 14%);
+        background: oklch(0.19 0 0 / 84%);
+      }
+
+      .link-card:focus-visible {
+        border-color: color-mix(
+          in oklab,
+          var(--ring) 70%,
+          transparent
+        );
+
+        box-shadow: 0 0 0 3px
+          color-mix(in oklab, var(--ring) 20%, transparent);
+      }
+
+      .link-card-primary {
+        border-color: oklch(1 0 0 / 13%);
+
+        background: linear-gradient(
+          110deg,
+          color-mix(in oklab, var(--primary) 5%, var(--card)),
+          var(--card) 40%
+        );
+
+        box-shadow: 0 10px 34px
+          color-mix(in oklab, var(--primary) 6%, transparent);
+      }
+
+      .icon-frame {
+        display: flex;
+        flex: 0 0 auto;
+        align-items: center;
+        justify-content: center;
+
+        width: 40px;
+        height: 40px;
+
+        border: 1px solid oklch(1 0 0 / 6%);
+        border-radius: 10px;
+
+        background: oklch(1 0 0 / 2.8%);
+
+        color: var(--muted-foreground);
+
+        transition: color 200ms ease;
+      }
+
+      .link-card:hover .icon-frame {
+        color: var(--foreground);
+      }
+
+      .link-content {
+        min-width: 0;
+        flex: 1;
+
+        text-align: left;
+      }
+
+      .link-title {
+        display: block;
+
+        color: var(--foreground);
+
+        font-size: 0.9375rem;
+        font-weight: 500;
+        line-height: 1.25rem;
+      }
+
+      .link-description {
+        display: block;
+        margin-top: 2px;
+
+        color: var(--muted-foreground);
+
+        font-size: 0.8125rem;
+        line-height: 1.25rem;
+      }
+
+      .link-arrow {
+        flex: 0 0 auto;
+
+        color: var(--muted);
+
+        transition:
+          transform 200ms ease,
+          color 200ms ease;
+      }
+
+      .link-card:hover .link-arrow {
+        color: var(--secondary-foreground);
+        transform: translate(2px, -2px);
+      }
+
+      .socials {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+
+        margin-top: 28px;
+      }
+
+      .social-link {
+        position: relative;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 44px;
+        height: 44px;
+
+        border: 1px solid transparent;
+        border-radius: 12px;
+
+        color: var(--muted-foreground);
+
+        outline: none;
+
+        transition:
+          color 180ms ease,
+          background-color 180ms ease,
+          border-color 180ms ease,
+          transform 180ms ease;
+      }
+
+      .social-link:hover {
+        color: var(--foreground);
+
+        border-color: var(--border);
+        background: oklch(1 0 0 / 3%);
+
+        transform: translateY(-1px);
+      }
+
+      .social-link:focus-visible {
+        color: var(--foreground);
+
+        border-color: var(--ring);
+
+        box-shadow: 0 0 0 3px
+          color-mix(in oklab, var(--ring) 20%, transparent);
+      }
+
+      .social-tooltip {
+        position: absolute;
+        top: -36px;
+        left: 50%;
+
+        z-index: 20;
+
+        padding: 4px 8px;
+
+        border: 1px solid var(--border);
+        border-radius: 6px;
+
+        background: var(--popover);
+
+        box-shadow: 0 6px 20px oklch(0 0 0 / 28%);
+
+        color: var(--secondary-foreground);
+
+        font-size: 0.6875rem;
+        font-weight: 500;
+        line-height: 1rem;
+
+        white-space: nowrap;
+
+        opacity: 0;
+        pointer-events: none;
+
+        transform: translateX(-50%);
+
+        transition: opacity 150ms ease;
+      }
+
+      .social-link:hover .social-tooltip,
+      .social-link:focus-visible .social-tooltip {
+        opacity: 1;
+      }
+
+      .footer {
+        margin-top: auto;
+        padding-top: 40px;
+
+        color: var(--muted);
+
+        text-align: center;
+
+        font-size: 0.75rem;
+        line-height: 1.25rem;
+      }
+
+      .icon {
+        width: 18px;
+        height: 18px;
+
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .arrow-icon {
+        width: 17px;
+        height: 17px;
+      }
+
+      @media (min-width: 640px) {
+        html {
+          scrollbar-width: none;
+        }
+
+        body::-webkit-scrollbar {
+          display: none;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .profile-heading {
+          gap: 8px;
+        }
+
+        .monogram img {
+          width: 36px;
+          height: 36px;
+        }
+
+        .profile-name {
+          font-size: 1.65rem;
+        }
+      }
+
+      @media (min-width: 640px) {
+        .container {
+          padding: 56px 28px;
+        }
+
+        .profile-role,
+        .profile-description {
+          font-size: 0.9375rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
