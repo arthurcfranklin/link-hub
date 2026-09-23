@@ -61,6 +61,7 @@ link-hub/
 ├── index.html
 ├── LICENSE
 ├── README.md
+├── README.pt-BR.md
 ├── robots.txt
 └── sitemap.xml
 ```
@@ -165,3 +166,7 @@ Since the project does not use a framework or build system, these changes can be
 ## License
 
 This project is licensed under the MIT License. See [`LICENSE`](LICENSE) for details.
+
+---
+
+Developed by **Arthur Franklin** · [Português](README.pt-BR.md) · [MIT License](LICENSE)
